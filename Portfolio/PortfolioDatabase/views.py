@@ -27,7 +27,11 @@ def hobbies(request):
 
 def portfolio(request):
     portfolio_list = Portfolio.objects.all()
-    return HttpResponse(portfolio_list)
+    template = loader.get_template('PortfolioDatabase/portfolio.html')
+    context = {
+        'portfolio_list': portfolio_list,
+    }
+    return render(request, 'PortfolioDatabase/portfolio.html', context)
 
 
 def contact(request):
@@ -44,3 +48,10 @@ def detail_hobbies(request, hobbies_id):
         'hobbies': hobbies
     }
     return render(request, 'PortfolioDatabase.detail_hobbies.html', context)
+
+def detail_portfolio(request, portfolio_id):
+    portfolio = Portfolio.objects.get(pk=portfolio_id)
+    context = {
+        'portfolio': portfolio
+    }
+    return render(request, 'PortfolioDatabase.detail_portfolio.html', context)

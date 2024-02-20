@@ -10,6 +10,7 @@ class Hobbies(models.Model):
 
     name = models.CharField(max_length=200)
     description = models.CharField(max_length=500)
+    image = models.CharField(max_length=500)
 
 
 class Portfolio(models.Model):
@@ -19,3 +20,4 @@ class Portfolio(models.Model):
 
     name = models.CharField(max_length=200)
     description = models.CharField(max_length=500)
+    image = models.CharField(max_length=500)
