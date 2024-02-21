@@ -1,3 +1,97 @@
 body {
-    background-color: lightyellow;
+  font-family: 'Helvetica', sans-serif;
+  line-height: 1.6;
+  color: whitesmoke;
+}
+
+h1, h2, h3 {
+  color: white;
+}
+body {
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+header {
+  background-color: #004080;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+nav a {
+  color: #fff;
+  margin: 0 15px;
+  text-decoration: none;
+}
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #004080;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #00214d;
+}
+section {
+  margin-bottom: 40px;
+}
+
+section h2 {
+  color: #004080;
+}
+.project-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.hover-effect:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+body {
+  background: linear-gradient(to right, #004080, #00214d);
+  color: #fff;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
