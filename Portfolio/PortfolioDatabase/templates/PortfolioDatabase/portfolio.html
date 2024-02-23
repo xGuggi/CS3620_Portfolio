@@ -5,8 +5,11 @@
     <title>Document</title>
 </head>
 <body>
+
 {% block body %}
+<h1><a href="{% url 'portfolio_add' %}" class="btn btn-primary">Add New Portfolio Item</a></h1>
 {% for portfolio in portfolio_list  %}
+
    <div class="row">
        <div class ="col-md-3 offset-md-2">
            <img class="card" height="150px" src="{{ portfolio.image }}"/>
@@ -17,6 +20,7 @@
        </div>
        <div class="col-md-2">
            <a href="{% url 'detail_portfolio' portfolio.id %}" class="btn btn-success">Details</a>
+           <a href="{% url 'portfolio_update' portfolio.id %}" class="btn btn-primary">Edit</a>
        </div>
    </div>
 {% endfor %}

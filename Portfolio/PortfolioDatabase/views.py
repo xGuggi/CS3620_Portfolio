@@ -1,5 +1,6 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import ContactForm, PortfolioForm
 from .models import Hobbies
 from .models import Portfolio
 from django.template import loader
@@ -35,11 +36,13 @@ def portfolio(request):
 
 
 def contact(request):
-    template = loader.get_template('PortfolioDatabase/contact.html')
-    context = {
-        'contact_info': """Student Email: spencerguggisberg@mail.weber.edu"""
-    }
-    return render(request, 'PortfolioDatabase/contact.html', context)
+    form = ContactForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect('/PortfolioDatabase/')
+
+    return render(request, 'PortfolioDatabase/contact-form.html', {'form': form})
 
 
 def detail_hobbies(request, hobbies_id):
@@ -56,3 +59,34 @@ def detail_portfolio(request, portfolio_id):
         'portfolio': portfolio
     }
     return render(request, 'PortfolioDatabase/detail_portfolio.html', context)
+
+
+def portfolio_add(request):
+    form = PortfolioForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect('/PortfolioDatabase/portfolio')
+
+    return render(request, 'PortfolioDatabase/portfolio-form.html', {'form': form})
+
+
+def portfolio_update(request, id):
+    portfolio = Portfolio.objects.get(id=id)
+    form = PortfolioForm(request.POST or None, instance=portfolio)
+
+    if form.is_valid():
+        form.save()
+        return redirect('/PortfolioDatabase/portfolio')
+
+    return render(request, 'PortfolioDatabase/portfolio-form.html', {'form': form, 'portfolio': portfolio})
+
+
+def portfolio_delete(request, id):
+    portfolio = Portfolio.objects.get(id=id)
+
+    if request.method == 'POST':
+        portfolio.delete()
+        return redirect('/PortfolioDatabase/portfolio')
+
+    return render(request, 'PortfolioDatabase/portfolio-delete.html', {'portfolio': portfolio})

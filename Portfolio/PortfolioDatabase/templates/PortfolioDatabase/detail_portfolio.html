@@ -9,6 +9,7 @@
             <div class="col-md-6">
                 <h1>{{ portfolio.name }}</h1>
                 <h2>{{ portfolio.description }}</h2>
+                <a href="{% url 'portfolio_delete' portfolio.id %}">Delete</a>
             </div>
         </div>
     </div>
