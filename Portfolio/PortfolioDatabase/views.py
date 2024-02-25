@@ -4,6 +4,7 @@ from .forms import ContactForm, PortfolioForm
 from .models import Hobbies
 from .models import Portfolio
 from django.template import loader
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -61,6 +62,7 @@ def detail_portfolio(request, portfolio_id):
     return render(request, 'PortfolioDatabase/detail_portfolio.html', context)
 
 
+@login_required
 def portfolio_add(request):
     form = PortfolioForm(request.POST or None)
 
@@ -71,6 +73,7 @@ def portfolio_add(request):
     return render(request, 'PortfolioDatabase/portfolio-form.html', {'form': form})
 
 
+@login_required
 def portfolio_update(request, id):
     portfolio = Portfolio.objects.get(id=id)
     form = PortfolioForm(request.POST or None, instance=portfolio)
@@ -82,6 +85,7 @@ def portfolio_update(request, id):
     return render(request, 'PortfolioDatabase/portfolio-form.html', {'form': form, 'portfolio': portfolio})
 
 
+@login_required
 def portfolio_delete(request, id):
     portfolio = Portfolio.objects.get(id=id)
 

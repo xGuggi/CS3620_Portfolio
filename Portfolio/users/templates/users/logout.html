@@ -1,1 +1,7 @@
-<h1>You have been logged out!</h1>
+{% load static %}
+
+<form method="POST" action="{% url 'custom_logout' %}">
+    <link rel="stylesheet" href="{% static 'PortfolioDatabase/style.css' %}">
+    {% csrf_token %}
+    <button type="submit">logout</button>
+</form>

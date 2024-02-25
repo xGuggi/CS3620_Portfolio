@@ -1,0 +1,4 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'PortfolioDatabase/style.css' %}">
+<h1>{{ user.username }}</h1>
+<img src="{{ user.profile.image.url }}">

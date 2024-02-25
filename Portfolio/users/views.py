@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import RegistrationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+
 
 # Create your views here.
 def register(request):
@@ -14,3 +17,14 @@ def register(request):
     else:
         form = RegistrationForm()
     return render(request, 'users/register.html', {'form': form})
+
+
+@login_required
+def profilepage(request):
+    return render(request, 'users/profile.html')
+
+
+def custom_logout(request):
+    logout(request)
+    # Redirect to the desired URL after logout
+    return redirect('users/logout.html')

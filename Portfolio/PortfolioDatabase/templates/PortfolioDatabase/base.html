@@ -15,6 +15,12 @@
         <a href="{% url 'hobbies' %}" class="nav-item nav-link">Hobbies</a>
         <a href="{% url 'portfolio' %}" class="nav-item nav-link">Portfolio</a>
         <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'profile' %}" class="nav-item nav-link">Profile</a>
+            <a href="{% url 'logout' %}" class="nav-item nav-link">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}" class="nav-item nav-link">Login</a>
+        {% endif %}
     </div>
 </nav>
 {% if messages %}
